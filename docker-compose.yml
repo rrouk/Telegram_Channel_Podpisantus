@@ -1,0 +1,50 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Название вашего сервиса (контейнера)
+  podpisantus-bot:
+    build: .
+    # Имя образа, которое мы собрали ранее
+    image: podpisantus-tg-bot
+    
+    # Имя, которое будет присвоено запущенному контейнеру
+    container_name: podpisantus_telegram_bot
+    
+    # Автоматически перезапускать контейнер в случае сбоя или перезагрузки системы
+    restart: always
+    
+    # Переменные окружения. 
+    # Docker Compose автоматически загрузит их из файла .env в той же папке.
+    # Мы явно указываем, что нужно использовать переменные из окружения, 
+    # чтобы Docker Compose знал, какие из них передать контейнеру.
+    environment:
+      - TG_BOT_TOKEN=${TG_BOT_TOKEN}
+
+#      - http_proxy=http://xray-client:3128
+#      - https_proxy=http://xray-client:3128
+#      - HTTP_PROXY=http://xray-client:3128
+#      - HTTPS_PROXY=http://xray-client:3128
+
+    
+    # (Опционально, но рекомендуется) Подключение тома для сохранения данных
+    # Это гарантирует, что ваши JSON-файлы с данными и настройками не потеряются
+    # при удалении или пересоздании контейнера.
+    volumes:
+      - ./data/channel_signatures.db:/app/channel_signatures.db
+
+
+#    networks:
+#      - proxy-net
+
+    # Ограничение ОЗУ
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+
+#networks:
+#  proxy-net:
+#    external: true
