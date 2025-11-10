@@ -1,6 +1,8 @@
-# ✍️ Telegram Channel Signature Bot (@Podpisantus_bot)
+# ✍️ Telegram Channel Signature Bot 
 
 **Telegram Channel Signature Bot** — это асинхронный бот, который автоматически добавляет и управляет настраиваемыми подписями (футерами) к новым постам в ваших Telegram-каналах. Бот немедленно редактирует опубликованное сообщение, объединяя оригинальный текст с сохраненной подписью.
+
+### Рабочая версия бота находится тут: [@Podpisantus_bot](https://t.me/@Podpisantus_bot)
 
 ## ✨ Основные возможности
 
